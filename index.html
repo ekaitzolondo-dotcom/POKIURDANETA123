@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargador</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111827;
+        }
+        .btn-play {
+            background-color: #dc2626; /* Botón Rojo */
+            border: none;
+            color: white;
+            padding: 20px 45px;
+            font-size: 22px;
+            cursor: pointer;
+            border-radius: 12px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            box-shadow: 0 5px #991b1b;
+            text-transform: uppercase;
+        }
+        .btn-play:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px #7f1d1d;
+        }
+    </style>
+</head>
+<body>
+
+<button class="btn-play" onclick="generarEntorno()">JUGAR 1v1.LOL</button>
+
+<script>
+function generarEntorno() {
+    // 1. Abrimos la nueva pestaña en limpio desde el origen seguro de GitHub
+    var win = window.open('about:blank', '_blank');
+    
+    // 2. Inyectamos un script autocargable que descarga e instala el motor del juego directamente en el DOM del about:blank
+    win.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>1v1.lol</title>
+            <style>
+                html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
+                iframe { width: 100%; height: 100%; border: none; }
+            </style>
+        </head>
+        <body>
+            <iframe src="https://github.io"></iframe>
+        </body>
+        </html>
+    `);
+    win.document.close();
+}
+</script>
+
+</body>
+</html>
