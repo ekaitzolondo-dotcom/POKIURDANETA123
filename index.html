@@ -2,14 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Cargador de Juegos</title>
+    <title>Menu</title>
     <style>
-        body {
+        html, body {
             margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             background-color: #111827; /* Fondo oscuro */
         }
         .btn-play {
@@ -37,16 +39,16 @@
 
 <script>
 function abrirEnBlank() {
-    // 1. Abrimos la pestaña limpia about:blank desde el entorno seguro de GitHub
+    // 1. Abre la pestaña limpia about:blank
     var win = window.open('about:blank', '_blank');
     
-    // 2. Definimos la URL real del juego
+    // 2. Apunta directamente al juego HTML5 real alojado en gfiles
     var juegoUrl = "https://github.io";
     
-    // 3. Inyectamos el juego a pantalla completa dentro de la pestaña limpia
+    // 3. Inyecta el iframe del juego a pantalla completa dentro del about:blank
     win.document.write(`
         <html style="margin:0;padding:0;overflow:hidden;width:100%;height:100%;">
-        <head><title>Juego</title></head>
+        <head><title>1v1.lol</title></head>
         <body style="margin:0;padding:0;width:100%;height:100%;background:#000;">
             <iframe src="${juegoUrl}" style="width:100%;height:100%;border:none;margin:0;padding:0;"></iframe>
         </body>
