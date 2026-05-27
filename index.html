@@ -2,14 +2,59 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Cargando...</title>
+    <title>Cargador de Juegos</title>
     <style>
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
-        iframe { width: 100%; height: 100%; border: none; }
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111827; /* Fondo oscuro */
+        }
+        .btn-play {
+            background-color: #dc2626; /* Botón Rojo */
+            border: none;
+            color: white;
+            padding: 20px 45px;
+            font-size: 22px;
+            cursor: pointer;
+            border-radius: 12px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            box-shadow: 0 5px #991b1b;
+            text-transform: uppercase;
+        }
+        .btn-play:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px #7f1d1d;
+        }
     </style>
 </head>
 <body>
-    <!-- Aquí inyectamos el enlace real del juego del repositorio gfiles -->
-    <iframe src="https://github.io"></iframe>
+
+<button class="btn-play" onclick="abrirEnBlank()">JUGAR 1v1.LOL (about:blank)</button>
+
+<script>
+function abrirEnBlank() {
+    // 1. Abrimos la pestaña limpia about:blank desde el entorno seguro de GitHub
+    var win = window.open('about:blank', '_blank');
+    
+    // 2. Definimos la URL real del juego
+    var juegoUrl = "https://github.io";
+    
+    // 3. Inyectamos el juego a pantalla completa dentro de la pestaña limpia
+    win.document.write(`
+        <html style="margin:0;padding:0;overflow:hidden;width:100%;height:100%;">
+        <head><title>Juego</title></head>
+        <body style="margin:0;padding:0;width:100%;height:100%;background:#000;">
+            <iframe src="${juegoUrl}" style="width:100%;height:100%;border:none;margin:0;padding:0;"></iframe>
+        </body>
+        </html>
+    `);
+    win.document.close();
+}
+</script>
+
 </body>
 </html>
